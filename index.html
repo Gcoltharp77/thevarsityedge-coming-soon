@@ -1,227 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Varsity Edge — Coming Soon</title>
-  <meta name="description" content="The Varsity Edge is a coach development platform focused on systems, leadership tools, and program design. Launching soon." />
+  <meta name="description" content="The Varsity Edge is a coach development platform focused on systems, tools, and leadership." />
+
   <style>
-    :root{
-      --navy:#0b1d33;
-      --navy2:#071427;
-      --red:#c4161c;
-      --white:#ffffff;
-      --muted:rgba(255,255,255,.82);
-      --muted2:rgba(255,255,255,.65);
-      --card:rgba(255,255,255,.08);
-      --border:rgba(255,255,255,.18);
-      --shadow: 0 18px 40px rgba(0,0,0,.35);
-      --radius:18px;
-      --max: 1120px;
+    :root {
+      --navy: #0b1b3a;
+      --red: #c81e1e;
+      --white: #ffffff;
+      --muted: #cfd6e6;
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.15);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--white);
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--white);
       background:
-        radial-gradient(900px 600px at 18% 12%, rgba(196,22,28,.28), transparent 62%),
-        radial-gradient(800px 520px at 86% 22%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 42px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-    .brand img{width:56px; height:56px; object-fit:contain}
-    .brand .name{line-height:1.05}
-    .brand .name strong{display:block; letter-spacing:.6px; font-size:14px; text-transform:uppercase}
-    .brand .name span{display:block; font-size:12px; color:var(--muted2)}
-
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:12px;
-      text-decoration:none;
-      white-space:nowrap;
-    }
-    .pill .dot{width:8px; height:8px; border-radius:999px; background:var(--red); box-shadow:0 0 0 4px rgba(196,22,28,.18)}
-
-    .hero{margin-top:36px; display:grid; grid-template-columns: 1.25fr .75fr; gap:24px; align-items:stretch}
-
-    .panel{
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      padding:28px;
-      position:relative;
-      overflow:hidden;
-    }
-    .panel:before{
-      content:"";
-      position:absolute; inset:-2px -2px auto -2px;
-      height:4px;
-      background:linear-gradient(90deg, transparent, var(--red), transparent);
-      opacity:.9;
+        radial-gradient(900px 500px at 15% 10%, rgba(200,30,30,0.45), transparent 55%),
+        radial-gradient(900px 500px at 85% 15%, rgba(24,68,140,0.35), transparent 60%),
+        linear-gradient(180deg, #07152f, #050b17);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
     }
 
-    h1{margin:0 0 10px; font-size:44px; letter-spacing:-.8px; line-height:1.05}
-    .sub{margin:0 0 18px; color:var(--muted); font-size:16px; line-height:1.55; max-width:62ch}
-
-    .kpis{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
-    .kpi{
-      padding:10px 12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      border-radius:12px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .kpi b{color:var(--white)}
-
-    .ctaRow{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      text-decoration:none;
-      font-weight:700;
-      letter-spacing:.2px;
-      font-size:14px;
-    }
-    .btn.primary{background:var(--red); border-color:rgba(196,22,28,.55)}
-    .btn.ghost{background:rgba(255,255,255,.06)}
-
-    .side{
-      display:flex; flex-direction:column; gap:14px;
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px 26px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      text-align: center;
     }
 
-    .cardTitle{font-weight:800; letter-spacing:.3px; margin:0 0 8px; font-size:14px; text-transform:uppercase}
-    .divider{height:1px; background:rgba(255,255,255,.16); margin:12px 0}
+    .hero-banner {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 22px;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+    }
 
-    .form{
-      display:flex; flex-direction:column; gap:10px;
+    .description {
+      max-width: 860px;
+      margin: 0 auto 26px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
     }
-    label{font-size:12px; color:var(--muted2)}
-    input{
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(7,20,39,.55);
-      color:var(--white);
-      outline:none;
-      font-size:14px;
-    }
-    input::placeholder{color:rgba(255,255,255,.45)}
-    button{
-      cursor:pointer;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid rgba(196,22,28,.55);
-      background:var(--red);
-      color:var(--white);
-      font-weight:800;
-      letter-spacing:.2px;
-      font-size:14px;
-    }
-    .fine{margin:0; font-size:12px; color:var(--muted2); line-height:1.5}
 
-    .footer{margin-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; color:var(--muted2); font-size:12px}
-    .tagline{letter-spacing:.6px; text-transform:uppercase}
-
-    /* Responsive */
-    @media (max-width: 920px){
-      h1{font-size:40px}
-      .hero{grid-template-columns:1fr;}
-      .brand img{width:52px; height:52px}
+    .buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
     }
-    @media (max-width: 520px){
-      h1{font-size:34px}
-      .panel{padding:20px}
+
+    .btn {
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      min-width: 210px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn.primary {
+      background: var(--red);
+      color: var(--white);
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+    }
+
+    .chips {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#" aria-label="The Varsity Edge">
-        <img src="thevarsityedge-logo.png" alt="The Varsity Edge logo" />
-        <div class="name">
-          <strong>The Varsity Edge</strong>
-          <span>Coach Development Platform</span>
-        </div>
-      </a>
-      <span class="pill"><span class="dot"></span>Coming Soon</span>
+  <main class="container">
+
+    <!-- HERO GRAPHIC -->
+    <img 
+      src="hero-banner.png" 
+      alt="The Varsity Edge — Systems • Tools • Leadership" 
+      class="hero-banner"
+    />
+
+    <p class="description">
+      The Varsity Edge is building a professional coach development platform designed for real high school football seasons—focused on practical systems, plug-and-play tools, and leadership training that translates directly to weekly execution.
+    </p>
+
+    <div class="buttons">
+      <a href="#" class="btn primary">Join Early Access</a>
+      <a href="#" class="btn secondary">See What’s Coming</a>
     </div>
 
-    <div class="hero">
-      <div class="panel">
-        <h1>Developing Coaches at Every Stage — Systems, Tools, Leadership</h1>
-        <p class="sub">
-          The Varsity Edge is building a coach development operating system: practical frameworks, plug-and-play tools, and leadership training designed for real high school football seasons.
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="#waitlist">Join Early Access</a>
-          <a class="btn ghost" href="#what">What We’re Building</a>
-        </div>
-
-        <div class="kpis" aria-label="Credibility and focus areas">
-          <div class="kpi"><b>Systems</b> for weekly & seasonal execution</div>
-          <div class="kpi"><b>Tools</b> you can implement immediately</div>
-          <div class="kpi"><b>Leadership</b> for coordinators & head coaches</div>
-        </div>
-      </div>
-
-      <div class="side">
-        <div class="panel" id="waitlist">
-          <p class="cardTitle">Early Access List</p>
-          <p class="fine">Be first in line for launch updates, coaching nuggets, and early member pricing.</p>
-          <div class="divider"></div>
-
-          <!--
-            OPTION 1 (fast): Use this simple form now.
-            Later, replace this entire <form> with your ConvertKit embed form code.
-          -->
-          <form class="form" method="post" action="#" onsubmit="return false;">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="coach@school.edu" required />
-            <button type="submit">Request Early Access</button>
-            <p class="fine">No spam. Just systems you can use.</p>
-          </form>
-
-          <!--
-            OPTION 2 (recommended): ConvertKit embed
-            Paste your ConvertKit form embed code here and delete the form above.
-          -->
-        </div>
-
-        <div class="panel" id="what">
-          <p class="cardTitle">Launch Focus</p>
-          <p class="fine"><b>Membership Hub:</b> toolkits, embedded training, and implementation prompts.</p>
-          <p class="fine"><b>Starter Cohort:</b> foundations for emerging coaches and first-time coordinators.</p>
-          <p class="fine"><b>Head Coach Pipeline:</b> application-based 10-coach cohort for program leadership.</p>
-          <div class="divider"></div>
-          <p class="fine"><span class="tagline">Clarity • Structure • Purpose</span></p>
-        </div>
-      </div>
+    <div class="chips">
+      <div class="chip"><strong>Systems</strong> for weekly &amp; seasonal execution</div>
+      <div class="chip"><strong>Tools</strong> you can implement immediately</div>
+      <div class="chip"><strong>Leadership</strong> for coordinators &amp; head coaches</div>
     </div>
 
-    <div class="footer">
-      <span>© <span id="y"></span> The Varsity Edge</span>
-      <span class="tagline">Clarity • Structure • Purpose</span>
-    </div>
-  </div>
+    <footer>
+      Clarity • Structure • Purpose
+    </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  </main>
 </body>
 </html>
